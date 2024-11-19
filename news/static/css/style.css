@@ -100,7 +100,7 @@
 }
 
 .topbar .top-info {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'montserrat', sans-serif;
     font-size: 15px;
     font-weight: 400;
     letter-spacing: 1px;
@@ -109,7 +109,7 @@
 }
 
 .topbar .top-link {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'montserrat', sans-serif;
     font-size: 15px;
     font-weight: 400;
     letter-spacing: 1px;
@@ -127,7 +127,7 @@
 .topbar .top-link a {
     font-size: medium;
     font-weight: 400;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'montserrat', sans-serif;
     letter-spacing: 1px;
 }
 
@@ -252,7 +252,7 @@
 /*** Top News End ***/
 
 
-/*** Latest News Start ***/
+/*** 최신 뉴스 Start ***/
 .latest-news .latest-news-carousel.owl-carousel{
     position: relative;
 }
@@ -289,7 +289,7 @@
     color: var(--bs-white);
     border-radius: 10px;
 }
-/*** Latest News End ***/
+/*** 최신 뉴스 End ***/
 
 
 /*** Whats New Start ***/

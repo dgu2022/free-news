@@ -69,7 +69,7 @@
   }
 }
 
-// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Media of at 가장 the maximum breakpoint width. No query for the largest breakpoint.
 // Makes the @content apply to the given breakpoint and narrower.
 @mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
   $max: breakpoint-max($name, $breakpoints);

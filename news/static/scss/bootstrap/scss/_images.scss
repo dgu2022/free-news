@@ -18,7 +18,7 @@
   @include border-radius($thumbnail-border-radius);
   @include box-shadow($thumbnail-box-shadow);
 
-  // Keep them at most 100% wide
+  // Keep them at 가장 100% wide
   @include img-fluid();
 }
 

@@ -70,7 +70,7 @@
     });
 
 
-    // What's New carousel
+    // 깜짝뉴스 carousel
     $(".whats-carousel").owlCarousel({
         autoplay: true,
         smartSpeed: 2000,
