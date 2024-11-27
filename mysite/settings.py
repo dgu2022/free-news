@@ -38,6 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'news',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.naver'
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +140,10 @@ LOGIN_REDIRECT_URL = "/"
 
 # Logout 성공시 URL 경로
 LOGOUT_REDIRECT_URL = "/"
+
+SITE_ID = 2
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+LOGIN_REDIRECT_URL = 'main'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'index'
+ACCOUNT_LOGOUT_ON_GET = True 

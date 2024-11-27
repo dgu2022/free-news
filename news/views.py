@@ -3,12 +3,14 @@ from news.forms import UserForm
 from django.contrib.auth import authenticate, login
 from django.utils import timezone
 from .models import Post
+from datetime import datetime
+from django.utils.dateformat import DateFormat
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'news/post_list.html', {'posts': posts})
 
-def post_list(request):
+def post_list2(request):
     # model(DB)처리
     # Post 생성하기
     post = Post()
@@ -28,7 +30,10 @@ def error(request):
     return render(request, 'news/error.html', {})
 
 def index(request):
-    return render(request, 'news/index.html', {})
+    list_day_kr = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
+    today = DateFormat(datetime.now()).format('Y-m-d')
+    day = list_day_kr[datetime.now().weekday()]
+    return render(request, 'news/index.html', {'today': today, 'day': day})
 
 def contact(request):
     return render(request, 'news/contact.html', {})

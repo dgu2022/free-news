@@ -1,6 +1,8 @@
 {% extends "news/base.html" %}
 {% load static %}
+{% load socialaccount %}
 {% block content %}
+
 <!--
     <h2>로그인</h2>
     <h4>{% if msg %}{{ msg }}{% endif %}</h4>
@@ -10,7 +12,6 @@
     </form>
     <p>
         <a href="{% url 'news:index' %}">홈으로</a>
-        <a href="{% url 'news:register' %}">회원가입</a>
     </p>
 -->
 
@@ -25,31 +26,34 @@
         </div>
         <div class="sign-in-up">
             <form class="sign-in-form active">
-            <input type="text" placeholder="Username or email">
-            <input type="password" placeholder="Password">
+            <input type="text" placeholder="아이디">
+            <input type="password" placeholder="비밀번호">
             <span>
                 <input type="checkbox"> <label>아이디 저장</label>
             </span>
             <a href="#">비밀번호를 잊음</a>
-            <input type="submit" value="Sign In">
+            <input type="submit" value="로그인">
             </form>
             <form class="sign-up-form">
-            <input type="text" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <input type="text" placeholder="Institution/Organization">
-            <input type="submit" value="Sign Up">
+            <input type="text" placeholder="아이디">
+            <input type="password" placeholder="비밀번호">
+            <div class="select">
+                <input type="radio" id="select" name="shop"><label for="select">기자</label>
+                <input type="radio" id="select2" name="shop"><label for="select2">독자</label>
+            </div>
+            <input type="submit" value="회원가입">
             </form>
             <div class="divider">
-            <span>or</span>
+            <span>소셜 로그인</span>
             </div>
             <div class="social-login">
-            <button class="kakatalk">카카오톡</button>
-            <button class="naver">네이버</button>
+            <button class="kakaotalk" type="button" onclick="location.href = '{% provider_login_url 'kakao' %}'"><img class = "kakao" src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" alt="" ></button>
+            <button class="naver" type="button" onclick="location.href = '{% provider_login_url 'naver' %}'"><img class = "naver" src="{% static 'img/btn_login_naver.png' %}" alt="" ></button>
             <button class="google">구글</button>
             <button class="facebook">페이스북</button>
             <div class="clearfix"></div>
-            <div class="why"><a href="#">Why Create an Account ?</a></div>
-            <div class="policy">By creating this account, you agree to <a href="#">our Privacy Policy</a> &amp; <a href="#">Cookie Policy .</a></div>
+            <div class="why"><a href="#">소셜 로그인의 장점</a></div>
+            <div class="policy">소셜 계정을 사용해서 <a href="#">간편하게 로그인하세요</a> ! <a href="#">안전합니다.</a></div>
             </div>
         </div>
         </div>
