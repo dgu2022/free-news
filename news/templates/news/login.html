@@ -1,0 +1,61 @@
+{% extends "news/base.html" %}
+{% load static %}
+{% block content %}
+<!--
+    <h2>로그인</h2>
+    <h4>{% if msg %}{{ msg }}{% endif %}</h4>
+    <form action="login" method="post">
+        {% csrf_token %}{{ form.as_p }}
+        <button type="submit">드가쟈~!</button>
+    </form>
+    <p>
+        <a href="{% url 'news:index' %}">홈으로</a>
+        <a href="{% url 'news:register' %}">회원가입</a>
+    </p>
+-->
+
+<link href="{% static 'css/login.css' %}" rel="stylesheet">
+
+<div class="container" id="login">
+    <div class="global-cont">
+        <div class="inner-cont">
+        <div class="sign">
+            <span class="active sign-in">로그인</span>
+            <span class="sign-up">회원가입</span>
+        </div>
+        <div class="sign-in-up">
+            <form class="sign-in-form active">
+            <input type="text" placeholder="Username or email">
+            <input type="password" placeholder="Password">
+            <span>
+                <input type="checkbox"> <label>아이디 저장</label>
+            </span>
+            <a href="#">비밀번호를 잊음</a>
+            <input type="submit" value="Sign In">
+            </form>
+            <form class="sign-up-form">
+            <input type="text" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <input type="text" placeholder="Institution/Organization">
+            <input type="submit" value="Sign Up">
+            </form>
+            <div class="divider">
+            <span>or</span>
+            </div>
+            <div class="social-login">
+            <button class="kakatalk">카카오톡</button>
+            <button class="naver">네이버</button>
+            <button class="google">구글</button>
+            <button class="facebook">페이스북</button>
+            <div class="clearfix"></div>
+            <div class="why"><a href="#">Why Create an Account ?</a></div>
+            <div class="policy">By creating this account, you agree to <a href="#">our Privacy Policy</a> &amp; <a href="#">Cookie Policy .</a></div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/login.js' %}"></script>
+
+{% endblock %}

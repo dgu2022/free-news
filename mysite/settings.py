@@ -120,3 +120,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Login 성공시 URL 경로
+LOGIN_REDIRECT_URL = "/"
+
+# Logout 성공시 URL 경로
+LOGOUT_REDIRECT_URL = "/"
