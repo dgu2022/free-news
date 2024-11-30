@@ -3,8 +3,26 @@ from news.forms import UserForm
 from django.contrib.auth import authenticate, login
 from django.utils import timezone
 from .models import Post
+from .model.post_list import MyPost
 from datetime import datetime
 from django.utils.dateformat import DateFormat
+import pymysql
+
+def example(request):
+    # model(DB)처리
+    # Cart 생성하기
+    post = MyPost()
+    # 장바구니 전체 정보 조회하기
+    # - cart_cnt : 정수값
+    # - cart_list : [{'컬럼명' : 값 , '컬럼명' : 값 ...},{},{}]
+    example_cnt, example_list = post.example()
+    # 반환
+    return render(
+        request,
+        "news/example.html",
+        {"example_cnt" : example_cnt,
+         "example_list" : example_list}
+    )
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')

@@ -8,6 +8,7 @@ urlpatterns = [
     path('contact', views.contact, name='contact'),
     path('detail-page', views.detail_page, name='detail-page'),
     path('index', views.index, name='index'),
+    path('example', views.example, name='example'),
     
     # REGISTER
     #path('register', views.register_view, name='register'),

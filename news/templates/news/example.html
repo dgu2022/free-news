@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>장바구니 목록 출력하기</h2>
+    <table border="1">
+      <tr>
+        <th>회원아이디</th>
+        <th>주문번호</th>
+      </tr>
+      <tr>
+        <td>a001</td>
+        <td>20202020202</td>
+      </tr>
+      {% for data in example_list %}
+      <tr>
+        <td>{{data}}</td>
+      </tr>
+      {% endfor%}
+    </table>
+  </body>
+</html>

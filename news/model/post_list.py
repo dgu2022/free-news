@@ -1,10 +1,25 @@
 import pymysql
-from mysqlapp.model.mysql import Mysql_Model
+from news.model.mysql import Mysql_Model
 
 class MyPost :
     # 생성자'
     def __init__(self):
         self.db = Mysql_Model()
+
+    def example(self):
+        sql = """
+        Select username    
+        From member   
+        Order By points
+        """
+        ### DB에 요청하기 : cursor에 담기
+        # rs_cnt : 실행 결과의 건수
+        rs_cnt = self.db.cur.execute(sql)
+        # 실행 결과 데이터
+        rows = self.db.cur.fetchall()
+        # DB 정보 반환
+        self.db.DBClose()
+        return rs_cnt, rows
         
     # 자신이 쓴 기사 최신 순으로 1개 불러오기
     def getMyPost(self):

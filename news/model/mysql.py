@@ -1,38 +1,26 @@
-# - DB 드라이버 연결
 import pymysql
 
 class Mysql_Model :
     ### 생성자
     def __init__(self):
-        self.initDBInfo()
-        self.DBConnection()
+        self.connect_to_db()
         self.DBCursor()
         
-        
-    ### DB 접속정보 정의
-    def initDBInfo(self):
-        self.host = "localhost"
-        self.user = "gjuser"
-        self.password = "dbdb"
-        self.db = "gjdb"
-        # 문자 인코딩 타입
-        self.charset = "utf8"
-        # 조회 시 컬럼명을 동시에 보여줄지 여부 설정
-        self.cursorclass = pymysql.cursors.DictCursor
-        # 입력/수정/삭제 시 DB에 자동반영 여부
-        self.autocommit = True
-        
 # - DB 접속
-    def DBConnection(self):
-        try :
+    def connect_to_db(self):
+        try:
             self.conn = pymysql.connect(
-                host = self.host, user = self.user, password = self.password, 
-                db = self.db, charset = self.charset, cursorclass = self.cursorclass, 
-                autocommit = self.autocommit
+                host='3.38.241.137',
+                user='backend',
+                password='lkb2021',
+                database='newnewsdb',
+                port=3306,
+                ssl={'ssl': {'ca': 'C:/Users/user/news/news/static/new-news.pem'}}
             )
-            print("DB 접속 성공 --> ", self.conn)
-        except :
-            print("DB 접속 정보 확인이 필요합니다")
+            print("Database connection successful!")
+            self.conn.close()
+        except Exception as e:
+            print(f"Error: {e}")
         
 # - DB로부터 cursor 받아오기
     def DBCursor(self):

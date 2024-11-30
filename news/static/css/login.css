@@ -153,7 +153,7 @@
     transition: .3s
   }
   .inner-cont .social-login button.facebook{
-    margin-left: 30px;
+    margin-left: 10px;
   }
   .inner-cont .social-login button.facebook {
     background-color: #3b5998;
@@ -161,14 +161,7 @@
   .inner-cont .social-login button.facebook::before {
     content: "\f09a";
   }
-  .inner-cont .social-login button.google {
-    background-color: #f10f0f;
-  }
-  .inner-cont .social-login button.google::before {
-    content:"\f1a0";
-  }
   .inner-cont .social-login button.facebook::before ,
-  .inner-cont .social-login button.google::before ,
   .inner-cont .social-login .why {
     overflow: hidden;
     margin: 0 0 10px;
