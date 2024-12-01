@@ -713,17 +713,17 @@ class Login:
         
     # 아이디와 비밀번호와 일치하는 user가 있는지 확인하고, 있으면 user 정보 반환
     # 로그인시 비밀번호 검증
-    def authenticate_member(self, username, password):
+    def authenticate_member(self, email, password):
         try:
             # SQL 쿼리: username으로만 사용자 정보 가져오기
             sql = """
             SELECT memberID, username, email, role, points, password
             FROM MEMBER
-            WHERE username = %s
+            WHERE email = %s
             """
             
-            # 데이터베이스에서 username으로 사용자 정보 조회
-            self.db.cur.execute(sql, (username,))
+            # 데이터베이스에서 email로 사용자 정보 조회
+            self.db.cur.execute(sql, (email,))
             user = self.db.cur.fetchone()
 
             # 사용자 존재 여부 확인
