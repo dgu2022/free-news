@@ -146,12 +146,21 @@ class MyPost:
     def get_latest_articles_by_category(self):
         try:
             sql = """
-            SELECT category, articleID, title, created_at
-            FROM (
-                SELECT *, ROW_NUMBER() OVER (PARTITION BY category ORDER BY created_at DESC) AS row_num
-                FROM ARTICLE
-            ) t
-            WHERE row_num <= 3
+                SELECT 
+                    category, 
+                    articleID, 
+                    title, 
+                    views, 
+                    created_at
+                FROM (
+                    SELECT 
+                        *, 
+                        ROW_NUMBER() OVER (PARTITION BY category ORDER BY created_at DESC) AS row_num
+                    FROM 
+                        ARTICLE
+                ) t
+                WHERE 
+                    row_num <= 3;
             """
             self.db.cur.execute(sql)
             articles = self.db.cur.fetchall()
@@ -170,14 +179,31 @@ class MyPost:
     def get_unread_top_articles_today_by_category(self, current_reader_id):
         try:
             sql = """
-            SELECT category, articleID, title, views
-            FROM (
-                SELECT *, ROW_NUMBER() OVER (PARTITION BY category ORDER BY views DESC) AS row_num
-                FROM ARTICLE a
-                LEFT JOIN ARTICLE_VIEW av ON av.articleID = a.articleID AND av.memberID = %s
-                WHERE DATE(a.created_at) = CURDATE() AND av.viewID IS NULL
-            ) t
-            WHERE row_num <= 3
+                SELECT 
+                    category, 
+                    articleID, 
+                    title, 
+                    views
+                FROM (
+                    SELECT 
+                        category, 
+                        a.articleID, 
+                        title, 
+                        a.created_at, 
+                        views, 
+                        ROW_NUMBER() OVER (PARTITION BY category ORDER BY views DESC) AS row_num
+                    FROM 
+                        ARTICLE a
+                    LEFT JOIN 
+                        ARTICLE_VIEW av 
+                    ON 
+                        av.articleID = a.articleID
+                    WHERE 
+                        DATE(a.created_at) = CURDATE() 
+                        AND (av.memberID IS NULL OR av.memberID != 1)
+                ) t
+                WHERE 
+                    row_num <= 3
             """
             self.db.cur.execute(sql, (current_reader_id,))
             articles = self.db.cur.fetchall()
