@@ -1,5 +1,5 @@
 // 요소 선택
-const modal = document.getElementById("profileModal");
+const modal = document.getElementById("프로필Modal");
 const trigger = document.querySelector(".trigger-link");
 const closeBtn = document.querySelector(".close");
 

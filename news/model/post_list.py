@@ -8,6 +8,27 @@ class MyPost:
     def __init__(self):
         self.db = Mysql_Model()
         
+    def example(self):
+        try:
+            sql = """
+            SELECT articleID, title, views
+            FROM ARTICLE
+            ORDER BY views DESC
+            LIMIT 10
+            """
+            self.db.cur.execute(sql)
+            articles = self.db.cur.fetchall()
+
+            if articles:
+                return True, articles  # 최신 기사 반환
+            else:
+                return False, "작성한 기사가 없습니다."
+        except Exception as e:
+            print(f"Error occurred: {e}")
+            return False, "최신 기사 조회 실패"
+        finally:
+            self.db.DBClose()
+
     # 자신이 쓴 기사 최신 순으로 1개 불러오기
     def get_my_post(self, current_journalist_id):
         try:

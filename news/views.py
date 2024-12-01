@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect
-from news.forms import UserForm
-from django.contrib.auth import authenticate, login
 from django.utils import timezone
 from .models import Post
-from .model.post_list import MyPost
+from .model.post_list import *
 from datetime import datetime
 from django.utils.dateformat import DateFormat
 import pymysql
+
+list_day_kr = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
+today = DateFormat(datetime.now()).format('Y-m-d')
+day = list_day_kr[datetime.now().weekday()]
 
 def example(request):
     # model(DB)처리
@@ -15,13 +17,12 @@ def example(request):
     # 장바구니 전체 정보 조회하기
     # - cart_cnt : 정수값
     # - cart_list : [{'컬럼명' : 값 , '컬럼명' : 값 ...},{},{}]
-    example_cnt, example_list = post.example()
+    example_cnt = post.example()
     # 반환
     return render(
         request,
         "news/example.html",
-        {"example_cnt" : example_cnt,
-         "example_list" : example_list}
+        {"example_cnt" : example_cnt}
     )
 
 def post_list(request):
@@ -45,68 +46,66 @@ def post_list2(request):
     )
 
 def error(request):
-    return render(request, 'news/404.html', {})
+    return render(request, 'news/404.html', {'today': today, 'day': day})
+
+def mypage(request):
+    return render(request, 'news/mypage.html', {'today': today, 'day': day})
 
 def index(request):
-    list_day_kr = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
-    today = DateFormat(datetime.now()).format('Y-m-d')
-    day = list_day_kr[datetime.now().weekday()]
     return render(request, 'news/index.html', {'today': today, 'day': day})
 
 def contact(request):
-    return render(request, 'news/contact.html', {})
+    return render(request, 'news/contact.html', {'today': today, 'day': day})
 
 def detail_page(request):
-    return render(request, 'news/detail-page.html', {})
+    return render(request, 'news/detail-page.html', {'today': today, 'day': day})
 
-def signup(request):
-    return "gg"
-
-def login_view(request):
-    return render(request, "news/login.html", {})
-    '''
+def register(request):
     if request.method == "POST":
-        form = AuthenticationForm(request, request.POST)
-        mas = "가입되어 있지 않거나 로그인 정보가 잘못 되었습니다."
-        print(form.is_valid())
-        template = "login.html"
-        if form.is_valid():
-            username = form.cleaned_data.get("username")
-            raw_password = form.cleaned_data.get("password")
-            user = authenticate(username = username, password = raw_password)
-            if user is not None:
-                msg = "로그인 성공!!"
-                login(request, user)
-                template = "index.html"
-        return render(request, template, {"form": form, "msg": msg})
-    else:
-        form = AuthenticationForm()
-        return render(request, "news/login.html", {"form": form})
-    '''
+        #username = request.POST['username']
+        username = request.POST['username']
+        password = request.POST['password']
+        email = request.POST['email']
+        role = request.POST['role']
 
-def register_view(request):
-    return render(request, "news/signup.html", {})
-    '''
-    if request.method == "POST":
-        form = AuthenticationForm(request, request.POST)
-        mas = "가입되어 있지 않거나 로그인 정보가 잘못 되었습니다."
-        print(form.is_valid())
-        template = "login.html"
-        if form.is_valid():
-            username = form.cleaned_data.get("username")
-            raw_password = form.cleaned_data.get("password")
-            user = authenticate(username = username, password = raw_password)
-            if user is not None:
-                msg = "로그인 성공!!"
-                login(request, user)
-                template = "index.html"
-        return render(request, template, {"form": form, "msg": msg})
+        register = Register()
+        #is_authenticated, result = Register.insert_member(self, username, password, email, role)
+        register.insert_member(username, password, email, role)
+
+        '''
+        if is_authenticated:
+            print("Authentication successful!") # 성공
+            print("User Info:", result) # result에 user에 관한 정보 들어있어
+            return render(request,'news/login.html', {'user' : result})
+        else:
+            print("Authentication failed:", result) # 실패
+            return render(request,'news/404.html')
+        '''
+        print("회원가입이 완료됐습니다.")
+        return render(request,'news/login.html',{'today': today, 'day': day})
     else:
-        form = AuthenticationForm()
-        return render(request, "news/login.html", {"form": form})
-    '''
+        return render(request,'news/login.html',{'today': today, 'day': day})
+
+def login(request):
+    if request.method == "POST":
+        #username = request.POST['username']
+        username = request.POST['username']
+        password = request.POST['password']
+        login = Login()
+        is_authenticated, result = login.authenticate_member(username, password)
+
+        if is_authenticated:
+            print("Authentication successful!") # 성공
+            print("User Info:", result) # result에 user에 관한 정보 들어있어
+            return render(request,'news/login.html', {'user' : result, 'today': today, 'day': day})
+        else:
+            print("Authentication failed:", result) # 실패
+            return render(request,'news/404.html', {'today': today, 'day': day})
+    else:
+        return render(request,'news/login.html', {'today': today, 'day': day})
+
 def logout_view(request):
-    return render(request, "news/signup.html", {})
+    return render(request, "news/login.html", {})
     '''
     def logout_view(request):
         logout(request)
@@ -128,5 +127,5 @@ def signup(request):
             return redirect("index")
     else: # Get 요청일 떄
         form = UserForm()
-    return render(request, "common/signup.html", {"form": form})
+    return render(request, "common/login.html", {"form": form})
 '''
