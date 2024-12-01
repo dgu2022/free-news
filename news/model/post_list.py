@@ -662,12 +662,20 @@ class Donate:
             self.db.cur.execute(donation_sql, (reader_id, journalist_id, amount))
 
             # 4. 후원자(`a유저`)의 포인트 차감
-            points_update_sql = """
+            points_update_sql1 = """
             UPDATE MEMBER
             SET points = points - %s
             WHERE memberID = %s
             """
-            self.db.cur.execute(points_update_sql, (amount, reader_id))
+            self.db.cur.execute(points_update_sql1, (amount, reader_id))
+
+            # 4. 기자(`b유저`)의 포인트 증가
+            points_update_sql2 = """
+            UPDATE MEMBER
+            SET points = points + %s
+            WHERE memberID = %s
+            """
+            self.db.cur.execute(points_update_sql2, (amount, journalist_id))
 
             # 5. 트랜잭션 확정
             self.db.conn.commit()
