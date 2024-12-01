@@ -45,7 +45,7 @@ def post_list2(request):
     )
 
 def error(request):
-    return render(request, 'news/error.html', {})
+    return render(request, 'news/404.html', {})
 
 def index(request):
     list_day_kr = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']

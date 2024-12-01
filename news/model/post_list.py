@@ -30,6 +30,29 @@ class MyPost:
             return False, "최신 기사 조회 실패"
         finally:
             self.db.DBClose()
+        
+    # 자신이 쓴 기사 최신 순으로 1개 불러오기
+    def get_my_post(self, current_journalist_id):
+        try:
+            sql = """
+            SELECT articleID, title, content, created_at
+            FROM ARTICLE
+            WHERE journalistID = %s
+            ORDER BY created_at DESC
+            LIMIT 1
+            """
+            self.db.cur.execute(sql, (current_journalist_id,))
+            article = self.db.cur.fetchone()
+
+            if article:
+                return True, article  # 최신 기사 반환
+            else:
+                return False, "작성한 기사가 없습니다."
+        except Exception as e:
+            print(f"Error occurred: {e}")
+            return False, "최신 기사 조회 실패"
+        finally:
+            self.db.DBClose()
     
     #구독한 기자들이 쓴 기사 중 내가 읽지 않은 기사 중 가장 조회수 높은 기사 불러오기
     def getMyPostMain1(self, current_reader_id):
