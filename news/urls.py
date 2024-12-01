@@ -10,6 +10,7 @@ urlpatterns = [
     path('index', views.index, name='index'),
     path('mypage', views.mypage, name='mypage'),
     #path('subscribe', views.subscribe, name='subscribe'),
+    path('detail-page/<int:article_id>/', views.detail_page),
     
     # REGISTER
     path('register', views.register, name='register'),

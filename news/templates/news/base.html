@@ -53,7 +53,7 @@
                             <div class="overflow-hidden" style="width: 735px;">
                                 <div id="note" class="ps-2">
                                     <img src="{% static 'img/features-fashion.jpg' %}" class="img-fluid rounded-circle border border-3 border-primary me-2" style="width: 30px; height: 30px;" alt="">
-                                    <a href="#"><p class="text-white mb-0 link-hover">종강은 12월 13일에 한다고 합니다만....</p></a>
+                                    <a href = "detail-page/{{ post.0 }}"><p class="text-white mb-0 link-hover">종강은 12월 13일에 한다고 합니다만....</p></a>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
             <div class="container-fluid bg-light">
                 <div class="container px-0">
                     <nav class="navbar navbar-light navbar-expand-xl">
-                        <a href="index" class="navbar-brand mt-3">
+                        <a href="../../index" class="navbar-brand mt-3">
                             <p class="text-primary display-6 mb-2" style="line-height: 0;">진짜뉴스</p>
                             <small class="text-body fw-normal" style="letter-spacing: 12px; position: relative; top: 12px;">시민참여언론</small>
                         </a>
@@ -81,22 +81,22 @@
                         </button>
                         <div class="collapse navbar-collapse bg-light py-3" id="navbarCollapse">
                             <div class="navbar-nav mx-auto border-top">
-                                <a href="index" class="nav-item nav-link active">홈</a>
-                                <a href="detail-page" class="nav-item nav-link">기사쓰기</a>
+                                <a href="../../index" class="nav-item nav-link active">홈</a>
+                                <a href="../../detail-page" class="nav-item nav-link">기사쓰기</a>
                                 <!--<a href="404" class="nav-item nav-link">에러</a>-->
                                 <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">기사보기</a>
+                                    <a href = "detail-page/{{ post.0 }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">기사보기</a>
                                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                        <a href="#" class="dropdown-item">스포츠</a>
-                                        <a href="#" class="dropdown-item">연예</a>
-                                        <a href="#" class="dropdown-item">생활</a>
-                                        <a href="#" class="dropdown-item">정치</a>
-                                        <a href="#" class="dropdown-item">경제</a>
-                                        <a href="#" class="dropdown-item">IT</a>
+                                        <a href = "detail-page/{{ post.0 }}" class="dropdown-item">스포츠</a>
+                                        <a href = "detail-page/{{ post.0 }}" class="dropdown-item">연예</a>
+                                        <a href = "detail-page/{{ post.0 }}" class="dropdown-item">생활</a>
+                                        <a href = "detail-page/{{ post.0 }}" class="dropdown-item">정치</a>
+                                        <a href = "detail-page/{{ post.0 }}" class="dropdown-item">경제</a>
+                                        <a href = "detail-page/{{ post.0 }}" class="dropdown-item">IT</a>
                                     </div>
                                 </div>
-                                <a href="contact" class="nav-item nav-link">문의</a>
-                                <a href="mypage" class="nav-item nav-link">마이페이지</a>
+                                <a href="../../contact" class="nav-item nav-link">문의</a>
+                                <a href="../../mypage" class="nav-item nav-link">마이페이지</a>
                             </div>
                             <div class="d-flex flex-nowrap border-top pt-3 pt-xl-0">
                                 {% if user_info or user_info != None %}
@@ -140,7 +140,7 @@
                 <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
                     <div class="row g-4">
                         <div class="col-lg-3">
-                            <a href="#" class="d-flex flex-column flex-wrap">
+                            <a href = "detail-page/{{ post.0 }}" class="d-flex flex-column flex-wrap">
                                 <p class="text-white mb-0 display-6">진짜뉴스</p>
                                 <small class="text-light" style="letter-spacing: 11px; line-height: 0;">Newspaper</small>
                             </a>
@@ -172,14 +172,14 @@
                         <div class="footer-item-2">
                             <div class="d-flex flex-column mb-4">
                                 <h4 class="mb-4 text-white">최근 뉴스</h4>
-                                <a href="#">
+                                <a href = "detail-page/{{ post.0 }}">
                                     <div class="d-flex align-items-center">
                                         <div class="rounded-circle border border-2 border-primary overflow-hidden">
                                             <img src="{% static 'img/footer-1.jpg' %}" class="img-zoomin img-fluid rounded-circle w-100" alt="">
                                         </div>
                                         <div class="d-flex flex-column ps-4">
                                             <p class="text-uppercase text-white mb-3">생활</p>
-                                            <a href="#" class="h6 text-white">
+                                            <a href = "detail-page/{{ post.0 }}" class="h6 text-white">
                                                 프로젝트는언제끝나나요종강은요
                                             </a>
                                             <small class="text-white d-block"><i class="fas fa-calendar-alt me-1"></i> 11월 19일, 2024</small>
@@ -188,14 +188,14 @@
                                 </a>
                             </div>
                             <div class="d-flex flex-column">
-                                <a href="#">
+                                <a href = "detail-page/{{ post.0 }}">
                                     <div class="d-flex align-items-center">
                                         <div class="rounded-circle border border-2 border-primary overflow-hidden">
                                             <img src="{% static 'img/footer-2.jpg' %}" class="img-zoominimg-fluid rounded-circle w-100" alt="">
                                         </div>
                                         <div class="d-flex flex-column ps-4">
                                             <p class="text-uppercase text-white mb-3">스포츠</p>
-                                            <a href="#" class="h6 text-white">
+                                            <a href = "detail-page/{{ post.0 }}" class="h6 text-white">
                                                 프로젝트는언제끝나나요종강은요
                                             </a>
                                             <small class="text-white d-block"><i class="fas fa-calendar-alt me-1"></i> 11월 19일, 2024</small>
@@ -264,7 +264,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>진짜뉴스</a>, 모든 권리 보유, 모든 권리가 인정됨.</span>
+                        <span class="text-light"><a href = "detail-page/{{ post.0 }}"><i class="fas fa-copyright text-light me-2"></i>진짜뉴스</a>, 모든 권리 보유, 모든 권리가 인정됨.</span>
                     </div>
                     <div class="col-md-6 my-auto text-center text-md-end text-white">
                         <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
@@ -279,7 +279,7 @@
 
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-primary border-2 border-white rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+        <a href = "detail-page/{{ post.0 }}" class="btn btn-primary border-2 border-white rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
 
         
         <!-- JavaScript Libraries -->

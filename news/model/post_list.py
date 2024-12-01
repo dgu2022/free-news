@@ -301,11 +301,11 @@ class FullPost:
     def __init__(self):
         self.db = Mysql_Model()
 
-    #모두 불러오기
-    def get_full_post(self, article_id):
+    #절반 불러오기
+    def get_half_post(self, article_id):
         try:
             sql = """
-            SELECT articleID, journalistID, title, content, category, likes, dislikes, views, created_at, updated_at
+            SELECT articleID, journalistID, title, category, likes, dislikes, views, created_at
             FROM ARTICLE
             where articleID = %s
             """
@@ -319,6 +319,27 @@ class FullPost:
         except Exception as e:
             print(f"Error occurred: {e}")
             return False, "랜덤 기사 조회 실패"
+        finally:
+            self.db.DBClose()
+
+    #모두 불러오기
+    def get_full_post(self, article_id):
+        try:
+            sql = """
+            SELECT journalistID, title, content, category, likes, dislikes, views, created_at, updated_at
+            FROM ARTICLE
+            where articleID = %s
+            """
+            self.db.cur.execute(sql, (article_id, ))
+            articles = self.db.cur.fetchall()
+
+            if articles:
+                return True, articles  # 상위 기사 목록 반환
+            else:
+                return False, "기사가 없습니다."
+        except Exception as e:
+            print(f"Error occurred: {e}")
+            return False, "전체 기사 조회 실패"
         finally:
             self.db.DBClose()
         
@@ -813,11 +834,9 @@ class Subscribe:
     def get_journalist_id(self, article_id):
         try:
             sql = """
-            SELECT 
+            SELECT journalistID
             FROM ARTICLE
             WHERE articleId = %s
-            ORDER BY created_at DESC
-            LIMIT 1
             """
             self.db.cur.execute(sql, (article_id,))
             jid = self.db.cur.fetchone()
@@ -877,7 +896,7 @@ class Subscribe:
             result = self.db.cur.fetchone()
 
             if result:
-                return True, result["subscriberCount"]  # 구독자 수 반환
+                return True, result[0]  # 구독자 수 반환
             else:
                 return False, "해당 사용자의 구독자 수를 조회할 수 없습니다."
         except Exception as e:

@@ -6,40 +6,34 @@
         <div class="container-fluid py-5">
             <div class="container py-5">
                 <ol class="breadcrumb justify-content-start mb-4">
-                    <li class="breadcrumb-item"><a href="#">홈</a></li>
-                    <li class="breadcrumb-item"><a href="#">전체 페이지</a></li>
+                    <li class="breadcrumb-item"><a href = "../../index">홈</a></li>
+                    <li class="breadcrumb-item"><a href = "../">전체 페이지</a></li>
                     <li class="breadcrumb-item active text-dark">세부 페이지</li>
                 </ol>
                 <div class="row g-4">
                     <div class="col-lg-8">
                         <div class="mb-4">
-                            <a href="#" class="h1 display-5">학생들이 자유를 부르짖고 있다 </a>
+                            <a href = "detail-page/{{ post.0 }}" class="h1 display-5">{{ article.1 }}</a>
                         </div>
                         <div class="position-relative rounded overflow-hidden mb-3">
                             <img src="{% static 'img/news-1.jpg' %}" class="img-zoomin img-fluid rounded w-100" alt="">
                             <div class="position-absolute text-white px-4 py-2 bg-primary rounded" style="top: 20px; right: 20px;">                                              
-                                Busimess
+                                {{ article.3 }}
                             </div>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <a href="#" class="text-dark link-hover me-3"><i class="fa fa-clock"></i> 06 분 전 읽음</a>
-                            <a href="#" class="text-dark link-hover me-3"><i class="fa fa-eye"></i> 3500 조회수</a>
-                            <a href="#" class="text-dark link-hover me-3"><i class="fa fa-댓글-dots"></i> 05 댓글</a>
-                            <a href="#" class="text-dark link-hover"><i class="fa fa-arrow-up"></i> 1.5k 공유</a>
+                            <a href = "detail-page/{{ post.0 }}" class="text-dark link-hover me-3"><i class="fa fa-clock"></i> {{ article.7 }}</a>
+                            <a href = "detail-page/{{ post.0 }}" class="text-dark link-hover me-3"><i class="fa fa-eye"></i> {{ article.6 }} 조회수</a>
+                            <a href = "detail-page/{{ post.0 }}" class="text-dark link-hover"><i class="fa fa-arrow-up"></i> {{ article.4 }} 좋아요</a>
                         </div>
-                        <p class="my-4">학생들이 자유를 부르짖고 있다
-                            진짜뉴스는 시민들의 참여로 만들어진 독립적이고 자유로운 언론사입니다. 실시간으로 한국과 세계 곳곳의 중요한 이슈를 전달합니다.
-                        </p>
                         <p class="my-4">
-                            진짜뉴스는 시민들의 참여로 만들어진 독립적이고 자유로운 언론사입니다. 실시간으로 한국과 세계 곳곳의 중요한 이슈를 전달합니다. 
-                            진짜뉴스는 시민들의 참여로 만들어진 독립적이고 자유로운 언론사입니다. 실시간으로 한국과 세계 곳곳의 중요한 이슈를 전달합니다. 
-                            진짜뉴스는 시민들의 참여로 만들어진 독립적이고 자유로운 언론사입니다. 실시간으로 한국과 세계 곳곳의 중요한 이슈를 전달합니다. 
+                            {{ article.2 }}
                         </p>
                         <div class="container theme-background-white main-body">
                             <div class="col-md-12">
                               <div class="row donate-bar">  
                                 <div class="col-md-4 theme-blue">
-                                  <a href="#" class="trigger-link">@이기백</a> 기자님. 좋은 기사 계속 써주세요.
+                                  <a href = "detail-page/{{ post.0 }}" class="trigger-link">@이기백</a> 기자님. 좋은 기사 계속 써주세요.
                                   <!-- 모달 -->
                                     <div id="프로필Modal" class="modal">
                                         <div class="modal-content">
@@ -82,17 +76,17 @@
                                 </div>
                                 <div class="col-md-8">
                                   <ul class="nav navbar-nav navbar-left donate-buttons" id="donate-buttons">
-                                    <li><a href="#">
+                                    <li><a href = "detail-page/{{ post.0 }}">
                                       <button class="btn-blue active" data-dollars='25' data-impact="독자님의 안목도 10P만큼 상승하셨습니다">
                                         10P
                                       </button>
                                     </a></li>
-                                    <li><a href="#">
+                                    <li><a href = "detail-page/{{ post.0 }}">
                                       <button class="btn-blue" data-dollars='500' data-impact="독자님의 안목도 100P만큼 상승하셨습니다">
                                         100P
                                       </button>
                                     </a></li>
-                                    <li id="other"><a href="#">
+                                    <li id="other"><a href = "detail-page/{{ post.0 }}">
                                       <button class="btn-blue-other" data-dollars='other' data-impact="감사하네요!">
                                         더 많이
                                       </button>
@@ -164,42 +158,6 @@
                                 </div>
                               </div><!--/.donate-bar-->
                             </div><!-- /.col-md-12 -->
-                        <div class="bg-light p-4 mb-4 rounded border-start border-3 border-primary">
-                            <h1 class="mb-2">학생들이 자유를 부르짖고 있다 </h1>
-                        </div>
-                        <div class="row g-4">
-                            <div class="col-6">
-                                <div class="rounded overflow-hidden">
-                                    <img src="{% static 'img/news-6.jpg' %}" class="img-zoomin img-fluid rounded w-100" alt="">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="rounded overflow-hidden">
-                                    <img src="{% static 'img/news-5.jpg' %}" class="img-zoomin img-fluid rounded w-100" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <p class="my-4">학생들이 자유를 부르짖고 있다  요즘 날씨는 정말 변덕스럽습니다. 갑작스러운 비와 예상치 못한 추위로 많은 사람들이 어려움을 겪고 있죠. 이런 때일수록 일기예보를 자주 확인하고 대비하는 습관이 중요합니다.
-                            관객들과의 공감, 그리고 시대적 흐름을 읽는 통찰이 중요한 역할을 합니다.
-                        </p>
-                        <p class="my-4">학생들이 자유를 부르짖고 있다  요즘 날씨는 정말 변덕스럽습니다. 갑작스러운 비와 예상치 못한 추위로 많은 사람들이 어려움을 겪고 있죠. 이런 때일수록 일기예보를 자주 확인하고 대비하는 습관이 중요합니다.
-                            학생들이 자유를 부르짖고 있다  새로운 영화가 개봉될 때마다 관객들의 기대는 높아집니다.
-                        </p>
-                        <div class="d-flex">
-                            <div class="me-2">
-                                <span class="fas fa-check-circle mb-3 fs-5"> 관객들과의 공감, 그리고 시대적 흐름을 읽는 통찰이 중요한 역할을 합니다. </span>
-                                <span class="fas fa-check-circle mb-3 fs-5"> 관객들과의 공감, 그리고 시대적 흐름을 읽는 통찰이 중요한 역할을 합니다. </span>
-                                <span class="fas fa-check-circle mb-3 fs-5"> 관객들과의 공감, 그리고 시대적 흐름을 읽는 통찰이 중요한 역할을 합니다. </span>
-                            </div>
-                            <div class="ms-2">
-                                <span class="fas fa-check-circle mb-3 fs-5"> 관객들과의 공감, 그리고 시대적 흐름을 읽는 통찰이 중요한 역할을 합니다. </span>
-                                <span class="fas fa-check-circle mb-3 fs-5"> 관객들과의 공감, 그리고 시대적 흐름을 읽는 통찰이 중요한 역할을 합니다. </span>
-                                <span class="fas fa-check-circle mb-3 fs-5"> 관객들과의 공감, 그리고 시대적 흐름을 읽는 통찰이 중요한 역할을 합니다. </span>
-                            </div>
-                        </div>
-                        <p class="my-4">학생들이 자유를 부르짖고 있다  요즘 날씨는 정말 변덕스럽습니다. 갑작스러운 비와 예상치 못한 추위로 많은 사람들이 어려움을 겪고 있죠. 이런 때일수록 일기예보를 자주 확인하고 대비하는 습관이 중요합니다.
-                            학생들이 자유를 부르짖고 있다  새로운 영화가 개봉될 때마다 관객들의 기대는 높아집니다.
-                        </p>
                         <div class="tab-class">
                             <div class="d-flex justify-content-between border-bottom mb-4">
                                 <ul class="nav nav-pills d-inline-flex text-center">
@@ -223,7 +181,7 @@
                                     </li>
                                 </ul>
                                 <div class="d-flex align-items-center">
-                                    <h5 class="mb-0 me-3">공유:</h5>
+                                    <h5 class="mb-0 me-3">좋아요:</h5>
                                     <i class="fab fa-facebook-f link-hover btn btn-square rounded-circle border-primary text-dark me-2"></i>
                                     <i class="btn fab bi-twitter link-hover btn btn-square rounded-circle border-primary text-dark me-2"></i>
                                     <i class="btn fab fa-instagram link-hover btn btn-square rounded-circle border-primary text-dark me-2"></i>
@@ -273,14 +231,14 @@
                             </div>
                         </div>
                         <div class="bg-light rounded my-4 p-4">
-                            <h4 class="mb-4">You Might Also Like</h4>
+                            <h4 class="mb-4">당신이 좋아할 다른 기사</h4>
                             <div class="row g-4">
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center p-3 bg-white rounded">
                                         <img src="{% static 'img/chatGPT.jpg' %}" class="img-fluid rounded" alt="">
                                         <div class="ms-3">
-                                            <a href="#" class="h5 mb-2">학생들이 자유를 부르짖고 있다</a>
-                                            <p class="text-dark mt-3 mb-0 me-3"><i class="fa fa-clock"></i> 06 분 전 읽음</p>
+                                            <a href = "detail-page/{{ post.0 }}" class="h5 mb-2">학생들이 자유를 부르짖고 있다</a>
+                                            <p class="text-dark mt-3 mb-0 me-3"><i class="fa fa-clock"></i> 06 </p>
                                         </div>
                                     </div>
                                 </div>
@@ -288,8 +246,8 @@
                                     <div class="d-flex align-items-center p-3 bg-white rounded">
                                         <img src="{% static 'img/chatGPT-1.jpg' %}" class="img-fluid rounded" alt="">
                                         <div class="ms-3">
-                                            <a href="#" class="h5 mb-2">학생들이 자유를 부르짖고 있다</a>
-                                            <p class="text-dark mt-3 mb-0 me-3"><i class="fa fa-clock"></i> 06 분 전 읽음</p>
+                                            <a href = "detail-page/{{ post.0 }}" class="h5 mb-2">학생들이 자유를 부르짖고 있다</a>
+                                            <p class="text-dark mt-3 mb-0 me-3"><i class="fa fa-clock"></i> 06 </p>
                                         </div>
                                     </div>
                                 </div>
@@ -304,8 +262,8 @@
                                     </div>
                                     <div class="col-9">
                                         <div class="d-flex justify-content-between">
-                                            <h5>임성혁 기자</h5>
-                                            <a href="#" class="link-hover text-body fs-6"><i class="fas fa-long-arrow-alt-right me-1"></i> </a>
+                                            <h5>이기백</h5>
+                                            <a href = "detail-page/{{ post.0 }}" class="link-hover text-body fs-6"><i class="fas fa-long-arrow-alt-right me-1"></i> </a>
                                         </div>
                                         <small class="text-body d-block mb-3"><i class="fas fa-calendar-alt me-1"></i> 11월 19일, 2024</small>
                                         <p class="mb-0">학생들이 자유를 부르짖고 있다  요즘 날씨는 정말 변덕스럽습니다. 갑작스러운 비와 예상치 못한 추위로 많은 사람들이 어려움을 겪고 있죠. 이런 때일수록 일기예보를 자주 확인하고 대비하는 습관이 중요합니다.
@@ -320,8 +278,8 @@
                                     </div>
                                     <div class="col-9">
                                         <div class="d-flex justify-content-between">
-                                            <h5>임성혁 기자</h5>
-                                            <a href="#" class="link-hover text-body fs-6"><i class="fas fa-long-arrow-alt-right me-1"></i> </a>
+                                            <h5>이다은</h5>
+                                            <a href = "detail-page/{{ post.0 }}" class="link-hover text-body fs-6"><i class="fas fa-long-arrow-alt-right me-1"></i> </a>
                                         </div>
                                         <small class="text-body d-block mb-3"><i class="fas fa-calendar-alt me-1"></i> 11월 19일, 2024</small>
                                         <p class="mb-0">학생들이 자유를 부르짖고 있다  요즘 날씨는 정말 변덕스럽습니다. 갑작스러운 비와 예상치 못한 추위로 많은 사람들이 어려움을 겪고 있죠. 이런 때일수록 일기예보를 자주 확인하고 대비하는 습관이 중요합니다.
@@ -361,66 +319,66 @@
                                     <h4 class="mb-4">인기 있는 분야</h4>
                                     <div class="row g-2">
                                         <div class="col-12">
-                                            <a href="#" class="link-hover btn btn-light w-100 rounded text-uppercase text-dark py-3">
+                                            <a href = "detail-page/{{ post.0 }}" class="link-hover btn btn-light w-100 rounded text-uppercase text-dark py-3">
                                                 생활
                                             </a>
                                         </div>
                                         <div class="col-12">
-                                            <a href="#" class="link-hover btn btn-light w-100 rounded text-uppercase text-dark py-3">
+                                            <a href = "detail-page/{{ post.0 }}" class="link-hover btn btn-light w-100 rounded text-uppercase text-dark py-3">
                                                 패션
                                             </a>
                                         </div>
                                         <div class="col-12">
-                                            <a href="#" class="link-hover btn btn-light w-100 rounded text-uppercase text-dark py-3">
+                                            <a href = "detail-page/{{ post.0 }}" class="link-hover btn btn-light w-100 rounded text-uppercase text-dark py-3">
                                                 정치
                                             </a>
                                         </div>
                                         <div class="col-12">
-                                            <a href="#" class="link-hover btn btn-light w-100 rounded text-uppercase text-dark py-3">
+                                            <a href = "detail-page/{{ post.0 }}" class="link-hover btn btn-light w-100 rounded text-uppercase text-dark py-3">
                                                 경제
                                             </a>
                                         </div>
                                         <div class="col-12">
-                                            <a href="#" class="link-hover btn btn-light w-100 rounded text-uppercase text-dark py-3">
+                                            <a href = "detail-page/{{ post.0 }}" class="link-hover btn btn-light w-100 rounded text-uppercase text-dark py-3">
                                                 연예
                                             </a>
                                         </div>
                                         <div class="col-12">
-                                            <a href="#" class="link-hover btn btn-light w-100 rounded text-uppercase text-dark py-3 mb-4">
+                                            <a href = "detail-page/{{ post.0 }}" class="link-hover btn btn-light w-100 rounded text-uppercase text-dark py-3 mb-4">
                                                 IT
                                             </a>
                                         </div>
                                     </div>
-                                    <h4 class="my-4">공유하기</h4>
+                                    <h4 class="my-4">좋아요하기</h4>
                                     <div class="row g-4">
                                         <div class="col-12">
-                                            <a href="#" class="w-100 rounded btn btn-primary d-flex align-items-center p-3 mb-2">
+                                            <a href = "detail-page/{{ post.0 }}" class="w-100 rounded btn btn-primary d-flex align-items-center p-3 mb-2">
                                                 <i class="fab fa-facebook-f btn btn-light btn-square rounded-circle me-3"></i>
                                                 <span class="text-white">13,977 팬</span>
                                             </a>
-                                            <a href="#" class="w-100 rounded btn btn-danger d-flex align-items-center p-3 mb-2">
+                                            <a href = "detail-page/{{ post.0 }}" class="w-100 rounded btn btn-danger d-flex align-items-center p-3 mb-2">
                                                 <i class="fab fa-twitter btn btn-light btn-square rounded-circle me-3"></i>
                                                 <span class="text-white">21,798 구독자</span>
                                             </a>
-                                            <a href="#" class="w-100 rounded btn btn-warning d-flex align-items-center p-3 mb-2">
+                                            <a href = "detail-page/{{ post.0 }}" class="w-100 rounded btn btn-warning d-flex align-items-center p-3 mb-2">
                                                 <i class="fab fa-youtube btn btn-light btn-square rounded-circle me-3"></i>
                                                 <span class="text-white">7,999 구독자</span>
                                             </a>
-                                            <a href="#" class="w-100 rounded btn btn-dark d-flex align-items-center p-3 mb-2">
+                                            <a href = "detail-page/{{ post.0 }}" class="w-100 rounded btn btn-dark d-flex align-items-center p-3 mb-2">
                                                 <i class="fab fa-instagram btn btn-light btn-square rounded-circle me-3"></i>
                                                 <span class="text-white">19,764 구독자</span>
                                             </a>
-                                            <a href="#" class="w-100 rounded btn btn-secondary d-flex align-items-center p-3 mb-2">
+                                            <a href = "detail-page/{{ post.0 }}" class="w-100 rounded btn btn-secondary d-flex align-items-center p-3 mb-2">
                                                 <i class="bi-cloud btn btn-light btn-square rounded-circle me-3"></i>
                                                 <span class="text-white">31,999 구독자</span>
                                             </a>
-                                            <a href="#" class="w-100 rounded btn btn-warning d-flex align-items-center p-3 mb-4">
+                                            <a href = "detail-page/{{ post.0 }}" class="w-100 rounded btn btn-warning d-flex align-items-center p-3 mb-4">
                                                 <i class="fab fa-dribbble btn btn-light btn-square rounded-circle me-3"></i>
                                                 <span class="text-white">37,999 구독자</span>
                                             </a>
                                         </div>
                                     </div>
-                                    <h4 class="my-4">인기 있는 News</h4>
+                                    <h4 class="my-4">인기 있는 기사</h4>
                                     <div class="row g-4">
                                         <div class="col-12">
                                             <div class="row g-4 align-items-center features-technologyem">
@@ -435,7 +393,7 @@
                                                 <div class="col-8">
                                                     <div class="features-content d-flex flex-column">
                                                         <p class="text-uppercase mb-2">스포츠</p>
-                                                        <a href="#" class="h6">
+                                                        <a href = "detail-page/{{ post.0 }}" class="h6">
                                                             프로젝트는언제끝나나요종강은요
                                                         </a>
                                                         <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> 11월 9, 2024</small>
@@ -456,7 +414,7 @@
                                                 <div class="col-8">
                                                     <div class="features-content d-flex flex-column">
                                                         <p class="text-uppercase mb-2">IT</p>
-                                                        <a href="#" class="h6">
+                                                        <a href = "detail-page/{{ post.0 }}" class="h6">
                                                             프로젝트는언제끝나나요종강은요
                                                         </a>
                                                         <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> 11월 9, 2024</small>
@@ -477,7 +435,7 @@
                                                 <div class="col-8">
                                                     <div class="features-content d-flex flex-column">
                                                         <p class="text-uppercase mb-2">패션</p>
-                                                        <a href="#" class="h6">
+                                                        <a href = "detail-page/{{ post.0 }}" class="h6">
                                                             프로젝트는언제끝나나요종강은요
                                                         </a>
                                                         <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> 11월 9, 2024</small>
@@ -498,7 +456,7 @@
                                                 <div class="col-8">
                                                     <div class="features-content d-flex flex-column">
                                                         <p class="text-uppercase mb-2">생활</p>
-                                                        <a href="#" class="h6">
+                                                        <a href = "detail-page/{{ post.0 }}" class="h6">
                                                             프로젝트는언제끝나나요종강은요
                                                         </a>
                                                         <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> 11월 9, 2024</small>
@@ -507,7 +465,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
-                                            <a href="#" class="link-hover btn border border-primary rounded-pill text-dark w-100 py-3 mb-4">더보기</a>
+                                            <a href = "detail-page/{{ post.0 }}" class="link-hover btn border border-primary rounded-pill text-dark w-100 py-3 mb-4">더보기</a>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="border-bottom my-3 pb-3">
@@ -515,42 +473,42 @@
                                             </div>
                                             <ul class="nav nav-pills d-inline-flex text-center mb-4">
                                                 <li class="nav-item mb-3">
-                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href = "detail-page/{{ post.0 }}">
                                                         <span class="text-dark link-hover" style="width: 90px;">생활</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item mb-3">
-                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href = "detail-page/{{ post.0 }}">
                                                         <span class="text-dark link-hover" style="width: 90px;">스포츠</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item mb-3">
-                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href = "detail-page/{{ post.0 }}">
                                                         <span class="text-dark link-hover" style="width: 90px;">정치</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item mb-3">
-                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href = "detail-page/{{ post.0 }}">
                                                         <span class="text-dark link-hover" style="width: 90px;">연예</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item mb-3">
-                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href = "detail-page/{{ post.0 }}">
                                                         <span class="text-dark link-hover" style="width: 90px;">게임</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item mb-3">
-                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href = "detail-page/{{ post.0 }}">
                                                         <span class="text-dark link-hover" style="width: 90px;">영화</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item mb-3">
-                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href = "detail-page/{{ post.0 }}">
                                                         <span class="text-dark link-hover" style="width: 90px;">여행</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item mb-3">
-                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href = "detail-page/{{ post.0 }}">
                                                         <span class="text-dark link-hover" style="width: 90px;">세계</span>
                                                     </a>
                                                 </li>
@@ -562,7 +520,7 @@
                                                 <div class="text-center banner-content-2">
                                                     <h6 class="mb-2">가장 인기있는</h6>
                                                     <p class="text-white mb-2">뉴스 & 연예 </p>
-                                                    <a href="#" class="btn btn-primary text-white px-4">쇼핑</a>
+                                                    <a href = "detail-page/{{ post.0 }}" class="btn btn-primary text-white px-4">쇼핑</a>
                                                 </div>
                                             </div>
                                         </div>
