@@ -5,6 +5,7 @@
         <div class="container-fluid features mb-5">
             <div class="container py-5">
                 <div class="row g-4">
+                    {% for post in posts %}
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="row g-4 align-items-center features-technologyem">
                             <div class="col-4">
@@ -89,6 +90,7 @@
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -318,14 +320,14 @@
         <!-- 최신 뉴스 End -->
 
 
-        <!-- 가장 Populer News Start -->
-        <div class="container-fluid populer-news py-5">
+        <!-- 가장 인기있는 News Start -->
+        <div class="container-fluid 인기있는-news py-5">
             <div class="container py-5">
                 <div class="tab-class mb-4">
                     <div class="row g-4">
                         <div class="col-lg-8 col-xl-9">
                             <div class="d-flex flex-column flex-md-row justify-content-md-between border-bottom mb-4">
-                                <h1 class="mb-4">What’s New</h1>
+                                <h1 class="mb-4">분야별 뉴스</h1>
                                 <ul class="nav nav-pills d-inline-flex text-center">
                                     <li class="nav-item mb-3">
                                         <a class="d-flex py-2 bg-light rounded-pill active me-2" data-bs-toggle="pill" href="#tab-1">
@@ -793,7 +795,7 @@
                                                 </div>
                                             </div>
                                             <div class="my-3">
-                                                <a href="#" class="h4">세계 Happiness Report 2023: What's the highway to happiness?</a>
+                                                <a href="#" class="h4">세계적인 리포트</a>
                                             </div>
                                             <p class="mt-4">학생들이 자유를 부르짖고 있다  Lorem Ipsum has been the industry's standard dummy Lorem Ipsum has been the industry's standard dummy
                                             </p>
@@ -955,7 +957,7 @@
                                             <div class="col-12">
                                                 <a href="#" class="w-100 rounded btn btn-primary d-flex align-items-center p-3 mb-2">
                                                     <i class="fab fa-facebook-f btn btn-light btn-square rounded-circle me-3"></i>
-                                                    <span class="text-white">13,977 Fans</span>
+                                                    <span class="text-white">13,977 팬</span>
                                                 </a>
                                                 <a href="#" class="w-100 rounded btn btn-danger d-flex align-items-center p-3 mb-2">
                                                     <i class="fab fa-twitter btn btn-light btn-square rounded-circle me-3"></i>
@@ -963,7 +965,7 @@
                                                 </a>
                                                 <a href="#" class="w-100 rounded btn btn-warning d-flex align-items-center p-3 mb-2">
                                                     <i class="fab fa-youtube btn btn-light btn-square rounded-circle me-3"></i>
-                                                    <span class="text-white">7,999 Subscriber</span>
+                                                    <span class="text-white">7,999 구독자</span>
                                                 </a>
                                                 <a href="#" class="w-100 rounded btn btn-dark d-flex align-items-center p-3 mb-2">
                                                     <i class="fab fa-instagram btn btn-light btn-square rounded-circle me-3"></i>
@@ -971,11 +973,11 @@
                                                 </a>
                                                 <a href="#" class="w-100 rounded btn btn-secondary d-flex align-items-center p-3 mb-2">
                                                     <i class="bi-cloud btn btn-light btn-square rounded-circle me-3"></i>
-                                                    <span class="text-white">31,999 Subscriber</span>
+                                                    <span class="text-white">31,999 구독자</span>
                                                 </a>
                                                 <a href="#" class="w-100 rounded btn btn-warning d-flex align-items-center p-3 mb-4">
                                                     <i class="fab fa-dribbble btn btn-light btn-square rounded-circle me-3"></i>
-                                                    <span class="text-white">37,999 Subscriber</span>
+                                                    <span class="text-white">37,999 구독자</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -1066,7 +1068,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
-                                                <a href="#" class="link-hover btn border border-primary rounded-pill text-dark w-100 py-3 mb-4">View More</a>
+                                                <a href="#" class="link-hover btn border border-primary rounded-pill text-dark w-100 py-3 mb-4">더보기</a>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="border-bottom my-3 pb-3">
@@ -1119,8 +1121,8 @@
                                                 <div class="position-relative banner-2">
                                                     <img src="{% static 'img/banner-2.jpg' %}" class="img-fluid w-100 rounded" alt="">
                                                     <div class="text-center banner-content-2">
-                                                        <h6 class="mb-2">가장 Populer</h6>
-                                                        <p class="text-white mb-2">News & 연예 </p>
+                                                        <h6 class="mb-2">가장 인기있는</h6>
+                                                        <p class="text-white mb-2">뉴스 & 연예 </p>
                                                         <a href="#" class="btn btn-primary text-white px-4">쇼핑</a>
                                                     </div>
                                                 </div>
@@ -1134,6 +1136,6 @@
                 </div>
             </div>
         </div>
-        <!-- 가장 Populer News End -->
+        <!-- 가장 인기있는 News End -->
 
 {% endblock %}

@@ -82,22 +82,28 @@
                         <div class="collapse navbar-collapse bg-light py-3" id="navbarCollapse">
                             <div class="navbar-nav mx-auto border-top">
                                 <a href="index" class="nav-item nav-link active">홈</a>
-                                <a href="detail-page" class="nav-item nav-link">기사</a>
+                                <a href="detail-page" class="nav-item nav-link">기사쓰기</a>
                                 <!--<a href="404" class="nav-item nav-link">에러</a>-->
                                 <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Dropdown</a>
+                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">기사보기</a>
                                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                        <a href="#" class="dropdown-item">Dropdown 1</a>
-                                        <a href="#" class="dropdown-item">Dropdown 2</a>
-                                        <a href="#" class="dropdown-item">Dropdown 3</a>
-                                        <a href="#" class="dropdown-item">Dropdown 4</a>
+                                        <a href="#" class="dropdown-item">스포츠</a>
+                                        <a href="#" class="dropdown-item">연예</a>
+                                        <a href="#" class="dropdown-item">생활</a>
+                                        <a href="#" class="dropdown-item">정치</a>
+                                        <a href="#" class="dropdown-item">경제</a>
+                                        <a href="#" class="dropdown-item">IT</a>
                                     </div>
                                 </div>
                                 <a href="contact" class="nav-item nav-link">문의</a>
                                 <a href="mypage" class="nav-item nav-link">마이페이지</a>
                             </div>
                             <div class="d-flex flex-nowrap border-top pt-3 pt-xl-0">
+                                {% if user_info or user_info != None %}
+                                <a href="{% url 'news:logout' %}">{{ user_info.1 }} 로그아웃</a>
+                                {% else %}
                                 <a href="{% url 'news:login' %}">로그인</a>
+                                {% endif %}
                                 <button class="btn-search btn border border-primary btn-md-square rounded-circle bg-white my-auto" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
                             </div>
                         </div>
@@ -206,8 +212,8 @@
                             <a class="btn-link text-white" href=""><i class="fas fa-angle-right text-white me-2"></i> 연예</a>
                             <a class="btn-link text-white" href=""><i class="fas fa-angle-right text-white me-2"></i> 생활</a>
                             <a class="btn-link text-white" href=""><i class="fas fa-angle-right text-white me-2"></i> 정치</a>
+                            <a class="btn-link text-white" href=""><i class="fas fa-angle-right text-white me-2"></i> 경제</a>
                             <a class="btn-link text-white" href=""><i class="fas fa-angle-right text-white me-2"></i> IT</a>
-                            <a class="btn-link text-white" href=""><i class="fas fa-angle-right text-white me-2"></i> 문화예술</a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-xl-3">

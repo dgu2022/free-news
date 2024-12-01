@@ -13,8 +13,8 @@
               <a href="#">
                   <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
               </a>
-              <h1>내 이름</h1>
-              <p>deydey@theEmail.com</p>
+              <h1>{{ user_info.1 }}</h1>
+              <p>{{ user_info.2 }}</p>
           </div>
 
           <ul class="nav nav-pills nav-stacked">
@@ -49,34 +49,22 @@
       </div>
       <div class="panel">
           <div class="bio-graph-heading">
-              Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ispum. Aliquam ac magna metus.
+              기자와 독자는 진실 앞에서 다르지 않다. 이곳은 당신의 진실이 기록되어 있다.
           </div>
           <div class="panel-body bio-graph-info">
-              <h1>Bio Graph</h1>
+              <h1>내 정보</h1>
               <div class="row">
                   <div class="bio-row">
-                      <p><span>First Name </span>: Camila</p>
+                      <p><span>닉네임 </span>: {{ user_info.1 }}</p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Last Name </span>: Smith</p>
+                      <p><span>직업 </span>: {{ user_info.3 }}</p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Country </span>: Australia</p>
+                      <p><span>이메일 </span>: {{ user_info.2 }}</p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Birthday</span>: 13 July 1983</p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Occupation </span>: UI Designer</p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Email </span>: jsmith@flatlab.com</p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Mobile </span>: (12) 03 4567890</p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Phone </span>: 88 (02) 123456</p>
+                      <p><span>포인트</span>: {{ user_info.4 }}</p>
                   </div>
               </div>
           </div>

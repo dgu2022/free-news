@@ -27,7 +27,7 @@
         <div class="sign-in-up">
             <form class="sign-in-form active" method="post" action="{% url 'news:login' %}">
                 {% csrf_token %}
-                <input name="username" type="text" placeholder="닉네임">
+                <input name="email" type="email" placeholder="이메일">
                 <input name="password" type="password" placeholder="비밀번호">
                 <span>
                     <input type="checkbox"> <label>아이디 저장</label>
@@ -38,11 +38,11 @@
             <form class="sign-up-form" method="post" action="{% url 'news:register' %}">
                 {% csrf_token %}
                 <input name="username" type="text" placeholder="닉네임">
-                <input name="password" type="password" placeholder="비밀번호">
                 <input name="email" type="email" placeholder="이메일">
+                <input name="password" type="password" placeholder="비밀번호">
                 <div class="select">
-                    <input type="radio" id="select" value="1" name="role"><label for="select">기자</label>
-                    <input type="radio" id="select2" value="2" name="role"><label for="select2">독자</label>
+                    <input type="radio" id="select" value="Journalist" name="role"><label for="select">기자</label>
+                    <input type="radio" id="select2" value="Reader" name="role"><label for="select2">독자</label>
                 </div>
                 <input type="submit" value="회원가입">
             </form>

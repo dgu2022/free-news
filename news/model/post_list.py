@@ -8,50 +8,6 @@ class MyPost:
     def __init__(self):
         self.db = Mysql_Model()
         
-    def example(self):
-        try:
-            sql = """
-            SELECT articleID, title, views
-            FROM ARTICLE
-            ORDER BY views DESC
-            LIMIT 10
-            """
-            self.db.cur.execute(sql)
-            articles = self.db.cur.fetchall()
-
-            if articles:
-                return True, articles  # 최신 기사 반환
-            else:
-                return False, "작성한 기사가 없습니다."
-        except Exception as e:
-            print(f"Error occurred: {e}")
-            return False, "최신 기사 조회 실패"
-        finally:
-            self.db.DBClose()
-
-    # 자신이 쓴 기사 최신 순으로 1개 불러오기
-    def get_my_post(self, current_journalist_id):
-        try:
-            sql = """
-            SELECT articleID, title, content, created_at
-            FROM ARTICLE
-            WHERE journalistID = %s
-            ORDER BY created_at DESC
-            LIMIT 1
-            """
-            self.db.cur.execute(sql, (current_journalist_id,))
-            article = self.db.cur.fetchone()
-
-            if article:
-                return True, article  # 최신 기사 반환
-            else:
-                return False, "작성한 기사가 없습니다."
-        except Exception as e:
-            print(f"Error occurred: {e}")
-            return False, "최신 기사 조회 실패"
-        finally:
-            self.db.DBClose()
-        
     # 자신이 쓴 기사 최신 순으로 1개 불러오기
     def get_my_post(self, current_journalist_id):
         try:
@@ -752,7 +708,7 @@ class Login:
                 return False, "User not found"
 
             # 비밀번호 검증
-            stored_password = user["password"]  # DB에 저장된 해시된 비밀번호
+            stored_password = user[5]  # DB에 저장된 해시된 비밀번호
             if bcrypt.checkpw(password.encode('utf-8'), stored_password.encode('utf-8')):
                 return True, user  # 성공 시 True와 사용자 정보 반환
             else:
