@@ -15,10 +15,9 @@ class Mysql_Model :
                 password='lkb2021',
                 database='newnewsdb',
                 port=3306,
-                ssl={'ssl': {'ca': 'C:/Users/user/news/news/static/new-news.pem'}}
+                ssl={'ssl': {'ca': 'C:/Users/user/news/new-news.pem'}}
             )
             print("Database connection successful!")
-            self.conn.close()
         except Exception as e:
             print(f"Error: {e}")
         

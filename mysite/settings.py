@@ -104,7 +104,7 @@ DATABASES = {
         'PASSWORD' : 'lkb2021', # Password
         'HOST': '3.38.241.137',
         'PORT': 3306, # 데이터베이스 포트
-        'ssl' : {'ssl': {'ca': 'C:/Users/user/news/news/static/new-news.pem'}},
+        'ssl' : {'ssl': {'ca': 'C:/Users/user/news/new-news.pem'}},
         'OPTIONS':{
             'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'"
         }
