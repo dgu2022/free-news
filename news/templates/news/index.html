@@ -106,13 +106,13 @@
                             <img src="{% static 'img/news-1.jpg' %}" class="img-fluid rounded img-zoomin w-100" alt="">
                             <div class="d-flex justify-content-center px-4 position-absolute flex-wrap" style="bottom: 10px; left: 0;">
                                 <a href="#" class="text-white me-3 link-hover"><i class="fa fa-clock"></i> 06 분 전 읽음</a>
-                                <a href="#" class="text-white me-3 link-hover"><i class="fa fa-eye"></i> 3500 조회수</a>
+                                <a href="#" class="text-white me-3 link-hover"><i class="fa fa-eye"></i>{{ post2.views }} 조회수</a>
                                 <a href="#" class="text-white me-3 link-hover"><i class="fa fa-댓글-dots"></i> 05 댓글</a>
                                 <a href="#" class="text-white link-hover"><i class="fa fa-arrow-up"></i> 1.5k 공유</a>
                             </div>
-                        </div>=
+                        </div>
                         <div class="border-bottom py-3">
-                            <a href="#" class="display-4 text-dark mb-0 link-hover">학생들이 자유를 부르짖고 있다</a>
+                            <a href="#" class="display-4 text-dark mb-0 link-hover">{{ post2.title }}</a>
                         </div>
                         <p class="mt-3 mb-4">진짜뉴스는 시민들의 참여로 만들어진 독립적이고 자유로운 언론사입니다. 실시간으로 한국과 세계 곳곳의 중요한 이슈를 전달합니다. 누구나 회원가입 후 기사를 작성할 수 있습니다. AI 검수를 통과하고 사람들의 관심을 끌면 포인트를 얻을 수 있습니다.
                         </p>
@@ -128,9 +128,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="d-flex flex-column">
-                                        <a href="#" class="h3">물리학자들이 종강이라는 현상을 관찰하고 있습니다. 아직은 관측되지 않았다고 합니다.</a>
+                                        <a href="#" class="h3">{{ post3.title }}</a>
                                         <p class="mb-0 fs-5"><i class="fa fa-clock"> 06 분 전 읽음</i> </p>
-                                        <p class="mb-0 fs-5"><i class="fa fa-eye"> 3500 조회수</i></p>
+                                        <p class="mb-0 fs-5"><i class="fa fa-eye">{{ post3.views }} 조회수</i></p>
                                     </div>
                                 </div>
                             </div>
@@ -146,11 +146,12 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="d-flex flex-column">
-                                        <a href="#" class="h4 mb-2">프로젝트는언제끝나나요종강은요</a>
+                                        <a href="#" class="h4 mb-2">{{ post4_1.title }}</a>
                                         <p class="fs-5 mb-0"><i class="fa fa-clock"> 06 분 전 읽음</i> </p>
-                                        <p class="fs-5 mb-0"><i class="fa fa-eye"> 3500 조회수</i></p>
+                                        <p class="fs-5 mb-0"><i class="fa fa-eye">{{ post4_1.views }} 조회수</i></p>
                                     </div>
                                 </div>
+                                {% for post in post4 %}
                                 <div class="col-12">
                                     <div class="row g-4 align-items-center">
                                         <div class="col-5">
@@ -160,93 +161,14 @@
                                         </div>
                                         <div class="col-7">
                                             <div class="features-content d-flex flex-column">
-                                                <a href="#" class="h6">프로젝트는언제끝나나요종강은요</a>
+                                                <a href="#" class="h6">{{ post.title }}</a>
                                                 <small><i class="fa fa-clock"> 06 분 전 읽음</i> </small>
-                                                <small><i class="fa fa-eye"> 3500 조회수</i></small>
+                                                <small><i class="fa fa-eye"> {{ post.views }} 조회수</i></small>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="row g-4 align-items-center">
-                                        <div class="col-5">
-                                            <div class="overflow-hidden rounded">
-                                                <img src="{% static 'img/news-4.jpg' %}" class="img-zoomin img-fluid rounded w-100" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-7">
-                                            <div class="features-content d-flex flex-column">
-                                                <a href="#" class="h6">프로젝트는언제끝나나요종강은요</a>
-                                                <small><i class="fa fa-clock"> 06 분 전 읽음</i> </small>
-                                                <small><i class="fa fa-eye"> 3500 조회수</i></small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row g-4 align-items-center">
-                                        <div class="col-5">
-                                            <div class="overflow-hidden rounded">
-                                                <img src="{% static 'img/news-5.jpg' %}" class="img-zoomin img-fluid rounded w-100" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-7">
-                                            <div class="features-content d-flex flex-column">
-                                                <a href="#" class="h6">프로젝트는언제끝나나요종강은요</a>
-                                                <small><i class="fa fa-clock"> 06 분 전 읽음</i> </small>
-                                                <small><i class="fa fa-eye"> 3500 조회수</i></small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row g-4 align-items-center">
-                                        <div class="col-5">
-                                            <div class="overflow-hidden rounded">
-                                                <img src="{% static 'img/news-6.jpg' %}" class="img-zoomin img-fluid rounded w-100" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-7">
-                                            <div class="features-content d-flex flex-column">
-                                                <a href="#" class="h6">프로젝트는언제끝나나요종강은요</a>
-                                                <small><i class="fa fa-clock"> 06 분 전 읽음</i> </small>
-                                                <small><i class="fa fa-eye"> 3500 조회수</i></small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row g-4 align-items-center">
-                                        <div class="col-5">
-                                            <div class="overflow-hidden rounded">
-                                                <img src="{% static 'img/news-7.jpg' %}" class="img-zoomin img-fluid rounded w-100" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-7">
-                                            <div class="features-content d-flex flex-column">
-                                                <a href="#" class="h6">프로젝트는언제끝나나요종강은요</a>
-                                                <small><i class="fa fa-clock"> 06 분 전 읽음</i> </small>
-                                                <small><i class="fa fa-eye"> 3500 조회수</i></small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row g-4 align-items-center">
-                                        <div class="col-5">
-                                            <div class="overflow-hidden rounded">
-                                                <img src="{% static 'img/news-7.jpg' %}" class="img-zoomin img-fluid rounded w-100" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-7">
-                                            <div class="features-content d-flex flex-column">
-                                                <a href="#" class="h6">프로젝트는언제끝나나요종강은요</a>
-                                                <small><i class="fa fa-clock"> 06 분 전 읽음</i> </small>
-                                                <small><i class="fa fa-eye"> 3500 조회수</i></small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
                        </div>
                     </div>

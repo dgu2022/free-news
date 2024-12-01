@@ -48,7 +48,7 @@
                                                 <div class="card p-4">
                                                     <div class="image d-flex flex-column justify-content-center align-items-center">
                                                         <button class="btn btn-secondary">
-                                                            <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" />
+                                                            <img src="https://bootdey.com/img/Content/avatar/avatar3.png" height="100" width="100" />
                                                         </button>
                                                         <span class="name mt-3">이기백</span>
                                                         <span class="idd">@lgb</span>
@@ -56,7 +56,10 @@
                                                             <span class="idd1">Oxc4c16a645_b21a</span> <span><i class="fa fa-copy"></i></span>
                                                         </div>
                                                         <div class="d-flex flex-row justify-content-center align-items-center mt-3">
-                                                            <span class="follow">구독자 <span class="number">1069</span>명</span>
+                                                            <span class="follow">구독자 <span class="number">{{ cnt_sub }}</span>명</span>
+                                                            <form id="postForm">
+                                                                <button type="button" id="increase_button">구독</button>
+                                                            </form>
                                                         </div>
                                                         <div class="d-flex mt-2">
                                                             <button class="btn1 btn-dark">프로필 수정하기</button>
@@ -572,7 +575,27 @@
             </div>
         </div>
         <!-- Single Product End -->
-         
+        <script>
+            // 서버로 POST 요청 보내기
+            document.getElementById('increase_button').addEventListener('click', function () {
+                fetch('/detail-page', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ action: 'increment' }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // 서버에서 반환된 값 업데이트
+                    document.getElementById('currentValue').innerText = data.currentValue;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('response').innerText = 'Error occurred!';
+                });
+            });
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="{% static 'js/donate.js' %}"></script>

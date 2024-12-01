@@ -29,6 +29,7 @@ $(document).ready(function(){
         dollar = input;
       }
       $('#price').text(""+dollar);
+      
     });
 
     $('#other').on('click', function(e) {

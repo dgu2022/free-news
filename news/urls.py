@@ -9,6 +9,7 @@ urlpatterns = [
     path('detail-page', views.detail_page, name='detail-page'),
     path('index', views.index, name='index'),
     path('mypage', views.mypage, name='mypage'),
+    #path('subscribe', views.subscribe, name='subscribe'),
     
     # REGISTER
     path('register', views.register, name='register'),

@@ -5,6 +5,7 @@ from .model.post_list import *
 from datetime import datetime
 from django.utils.dateformat import DateFormat
 import pymysql
+from random import shuffle, sample
 
 list_day_kr = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
 today = DateFormat(datetime.now()).format('Y-m-d')
@@ -29,6 +30,35 @@ def mypage(request):
     #'''
     return render(request, 'news/login.html', {'today': today, 'day': day})
 
+def get_post_safe(post, num):
+    if not post[0] or not post[1]:
+        print("여기서 에러?")
+        post = FullPost()
+        post_safe = random.sample(post.get_random_post(num)[1],num)
+        print(post_safe)
+        if not isinstance(post_safe, list):
+            return [post_safe]
+        return post_safe
+    return post
+
+'''
+def set_post_safe(post):
+    print("처음")
+    print(post)
+    unique_data = {}
+    for article in post:
+        article_id = article[num]
+        unique_data[article_id] = article
+
+    # 결과를 리스트로 변환
+    result = list(unique_data.values())
+    print("마지막")
+    print(result)
+    return result
+'''
+
+
+
 def index(request):
     base_dict = {'today': today, 'day': day}
     post_dict = {}
@@ -39,28 +69,49 @@ def index(request):
         if user_name:  # 로그인 한 사용자라면
             base_dict.update({'user_info': user_info})
             post = MyPost()
-            my_post1 = post.get_my_post(user_id) #자신이 쓴 기사 최신 순으로 1개
+            my_post1 = get_post_safe(post.get_my_post(user_id), 1) #자신이 쓴 기사 최신 순으로 1개
             post = MyPost()
-            my_post2 = post.getMyPostMain1(user_id) #구독한 기자들이 쓴 기사 중 내가 읽지 않은 기사 중 가장 조회수 높은 기사
+            my_post2 = get_post_safe(post.getMyPostMain1(user_id), 1) #구독한 기자들이 쓴 기사 중 내가 읽지 않은 기사 중 가장 조회수 높은 기사
             post = MyPost()
-            my_post3 = post.getMyPostMain2(user_id) #구독한 기자들이 쓴 기사 중 내가 읽지 않은 기사 중 댓글이 가장 많은 포스트 불러오기
+            my_post3 = get_post_safe(post.getMyPostMain2(user_id), 1) #구독한 기자들이 쓴 기사 중 내가 읽지 않은 기사 중 댓글이 가장 많은 포스트 불러오기
             post = MyPost()
-            my_post4 = post.get_random_articles_from_latest(user_id) #최신 10개 중 랜덤 4개 기사 조회
+            my_post4 = list(get_post_safe(post.get_random_articles_from_latest(user_id), 4)[1]) #최신 10개 중 랜덤 4개 기사 조회
             post = MyPost()
-            my_post4_2 = post.get_top_articles_today() #오늘 올라온 조회수 높은 3개 기사 조회
+            print(4)
+            print(my_post4)
+            my_post4_2 = list(get_post_safe(post.get_top_articles_today(), 3)) #오늘 올라온 조회수 높은 3개 기사 조회
             post = MyPost()
-            my_post4 += my_post4_2
-            my_post5 = post.get_latest_articles_by_category() #분야별 전체 기자들이 쓴 최신 기사 3개
+            print("4_2")
+            print(my_post4_2)
+            #my_post4 = set_post_safe(list(set(my_post4 + my_post4_2)), 0)
+            #shuffle(my_post4)
+            my_post4 = list(set(my_post4 + my_post4_2))
+            print("4_last")
+            print(my_post4)
+            my_post4_1 = my_post4[0]
+            my_post4 = my_post4[1:]
+            print("error?5")
+            my_post5 = list(get_post_safe(post.get_latest_articles_by_category(), 3)[1]) #분야별 전체 기자들이 쓴 최신 기사 3개
+            print(5)
+            print(my_post5)
             post = MyPost()
-            my_post5_2 = post.get_unread_top_articles_today_by_category(user_id) #분야별 내가 읽지 않은 오늘 올라온 조회수 높은 기사 3개
+            my_post5_2 = list(get_post_safe(post.get_unread_top_articles_today_by_category(user_id), 3)[1]) #분야별 내가 읽지 않은 오늘 올라온 조회수 높은 기사 3개
+            print("5_2")
+            print(my_post5_2)
             post = MyPost()
-            my_post5 += my_post5_2
-            my_post6 = post.getHotPostToday() #전체 기자들이 쓴 기사 중 작성일이 하루가 지나지 않은 기사 중 조회수 가장 높은 기사
+            #my_post5 = set_post_safe(list(set(my_post5 + my_post5_2)), 1)
+            #my_post5 = shuffle(my_post5)
+            my_post5 = list(set(my_post5 + my_post2))
+            my_post5_1 = my_post5[0]
+            my_post5 = my_post5[1:]
+            my_post6 = get_post_safe(post.getHotPostToday(), 1) #전체 기자들이 쓴 기사 중 작성일이 하루가 지나지 않은 기사 중 조회수 가장 높은 기사
             post = MyPost()
-            my_post7 = post.getHotPostWeek() #전체 기자들이 쓴 기사 중 작성일이 일주일이 지나지 않은 기사 중 조회수 높은 순으로 2개
+            my_post7 = get_post_safe(post.getHotPostWeek(), 2) #전체 기자들이 쓴 기사 중 작성일이 일주일이 지나지 않은 기사 중 조회수 높은 순으로 2개
             post = MyPost()
-            my_post8 = post.get_unread_popular_article(user_id) #구독한 기자들의 읽지 않은 조회수 높은 기사
-            post_dict = {'post1':my_post1, 'post2':my_post2, 'post3':my_post3, 'post4':my_post4, 'post5':my_post5, 'post6':my_post6, 'post7':my_post7, 'post8':my_post8}
+            my_post8 = get_post_safe(post.get_unread_popular_article(user_id), 1) #구독한 기자들의 읽지 않은 조회수 높은 기사
+            post_dict = {'post1':my_post1, 'post2':my_post2, 'post3':my_post3, 'post4':my_post4, 'post4_1':my_post4_1, \
+                         'post5':my_post5, 'post5_1':my_post5_1, 'post6':my_post6, \
+                         'post7':my_post7, 'post8':my_post8}
     #post = FullPost()
     #full_post1 = post
     print(post_dict)
@@ -71,7 +122,27 @@ def contact(request):
     return render(request, 'news/contact.html', {'today': today, 'day': day})
 
 def detail_page(request):
-    return render(request, 'news/detail-page.html', {'today': today, 'day': day})
+    if request.method == "GET":
+        user_name = request.session.get('user')
+        user_info = request.session.get('info')
+        user_id = user_info[0]
+        article_id = request.GET['article_id']
+        if user_name:  # 로그인 한 사용자라면
+            post = FullPost()
+            article = post.get_full_post(article_id)
+            sub = Subscribe()
+            jid = sub.get_journalist_id(article_id)
+            cnt_sub = sub.get_subscriber_count(jid)
+            sub.subscribe_journalist(user_id, jid)
+            return render(request, 'news/detail-page.html', {'today': today, 'day': day, 'article': article, 'cnt_sub': cnt_sub})
+        else:
+            return render(request, 'news/login.html', {'today': today, 'day': day})
+    elif request.method == "POST":        
+        sub = Subscribe()
+        jid = sub.get_journalist_id(article_id)
+        cnt_sub = sub.get_subscriber_count(jid)
+        sub.subscribe_journalist(user_id, jid)
+        return render(request, 'news/detail-page.html', {'today': today, 'day': day, 'article': article, 'cnt_sub': cnt_sub})
 
 def register(request):
     if request.method == "POST":

@@ -274,7 +274,50 @@ class FullPost:
     # 생성자'
     def __init__(self):
         self.db = Mysql_Model()
+
+    #모두 불러오기
+    def get_full_post(self, article_id):
+        try:
+            sql = """
+            SELECT articleID, journalistID, title, content, category, likes, dislikes, views, created_at, updated_at
+            FROM ARTICLE
+            where articleID = %s
+            """
+            self.db.cur.execute(sql, (article_id, ))
+            articles = self.db.cur.fetchall()
+
+            if articles:
+                return True, articles  # 상위 기사 목록 반환
+            else:
+                return False, "기사가 없습니다."
+        except Exception as e:
+            print(f"Error occurred: {e}")
+            return False, "랜덤 기사 조회 실패"
+        finally:
+            self.db.DBClose()
         
+    # 랜덤으로 불러오기
+    def get_random_post(self, num):
+        try:
+            sql = """
+            SELECT articleID, title, views
+            FROM ARTICLE
+            ORDER BY views DESC
+            LIMIT %s
+            """
+            self.db.cur.execute(sql, (num*2, ))
+            articles = self.db.cur.fetchall()
+
+            if articles:
+                return True, articles  # 상위 기사 목록 반환
+            else:
+                return False, "기사가 없습니다."
+        except Exception as e:
+            print(f"Error occurred: {e}")
+            return False, "랜덤 기사 조회 실패"
+        finally:
+            self.db.DBClose()
+
     # 전체 포스트 중 조회수 높은 포스트 불러오기
     # 조회수 높은 기사
     def get_top_articles_by_views(self):
@@ -740,6 +783,29 @@ class Subscribe:
     def __init__(self):
         self.db = Mysql_Model()
         
+    # 기자 조회하기
+    def get_journalist_id(self, article_id):
+        try:
+            sql = """
+            SELECT 
+            FROM ARTICLE
+            WHERE articleId = %s
+            ORDER BY created_at DESC
+            LIMIT 1
+            """
+            self.db.cur.execute(sql, (article_id,))
+            jid = self.db.cur.fetchone()
+
+            if jid:
+                return True, jid  # 기자id 반환
+            else:
+                return False, "기자가 없습니다."
+        except Exception as e:
+            print(f"Error occurred: {e}")
+            return False, "기자 이름 조회 실패"
+        finally:
+            self.db.DBClose()
+
     # 기자 구독
     def subscribe_journalist(self, reader_id, journalist_id):
         try:
